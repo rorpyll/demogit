@@ -1,0 +1,13 @@
+<div class='container mt-4 mb-4'>
+  <div class='col-md-8 mx-auto'>
+    <div class='card bg-light'>
+      <div class="card-title">
+        <%= link_to 'Back', products_path, class: 'ml-2 mt-3 btn btn-light' %>
+        <h1 class='text-center'>Add New Product</h1>
+      </div>
+      <div class="card-body">
+        <%= render 'form', product: @product %>
+      </div>  
+    </div>
+  </div>    
+</div>

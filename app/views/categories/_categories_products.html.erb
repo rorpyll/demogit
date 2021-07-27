@@ -1,0 +1,83 @@
+<div class='container-fluid pt-3 pb-3 bg-light'>
+  <div class='d-flex'>
+    <div class='col-md-12'>
+      <div class='col-md-4 bg-light float-right'>
+        <h3 class='card-header bg-primary text-white'>Cart<i class="fas fa-shopping-cart fa-xs"></i></h3>
+        <div class='card user_fav_items mt-3 '> 
+        <% if user_signed_in? %>        
+            <% @products.each do |product| %>
+              <% if @user_fav_products.include?(product.id) %>
+                  <div class='card-body'>
+                   <div class="media">
+                     <%= image_tag "#{asset_path 'Gym.jpg'}", class: 'mr-3 img-fluid', alt: 'Card Image' %>
+                      <div class="media-body">
+                        <h5 class="mt-0"><%= product.title.capitalize %></h5>
+                        <i class='fas fa-rupee-sign'>
+                          <b><%= product.price %></b>
+                        </i>
+                        <div class='row d-flex mt-2'>
+                          <%= button_to '+', add_favourite_products_path(product), class: 'btn btn-sm btn-success rounded-circle ml-2', id: '#modelFavouriteProductModel', remote: true  %>
+                          <b class='mt-3 ml-2'></b>
+                          <%= button_to '-', remove_favourite_products_path(product), method: :delete, class: 'btn btn-sm btn-danger rounded-circle ml-2', id: '#modelFavouriteProductModel', remote: true  %>   
+                        </div> 
+                      </div>
+                    </div>      
+                </div>
+                <%end%>
+              <%end%>
+              <div class="float-left mr-1 mt-3">
+                  <% if @user_fav_product_prices.present? && !@user_fav_product_prices.nil? %>
+                    <h5 class='pt-1 ml-3'>Total Price : <i class='fas fa-rupee-sign'></i><%= @user_fav_product_prices.sum %></h5>
+                  <% end %>
+                </div>    
+                <div class='row float-right ml-3'>
+                    <%= link_to 'Buy', new_contact_path, class: 'btn btn-success mt-3 ml-1 btn-sm mb-2' %>
+                </div>
+          <%end%> 
+        </div>   
+      </div>
+
+      <div class='col-md-8 bg-white pt-3 mb-4'>
+        <% @categories.each do |category| %>
+          <% if category.products.size >= 1 %>
+            <div class='mt-2 rounded p-3' id='<%= category.name %>'>
+              <%= link_to 'View More', 'javascript:void(0)', class: 'btn btn-sm btn-primary float-right' %>
+              <h5><%= category.name.capitalize %></h5>
+              <hr>
+            </div>
+            <div class='w-100'>
+              <div class="owl-carousel">
+                  <% category.products.each do |product| %>
+                    <div class='card'>
+                      <%= image_tag "#{asset_path 'Gym.jpg'}", class: 'card-img-top ', alt: 'Card Image' %>
+                       <div class='card-body text-center'>
+                          <div class='catd-title'>
+                            <h6 class='text-dark'><%= product.title.capitalize %></h6>  
+                          </div>
+                          <div class='card-text'>
+                            <p class='text-muted'><%#= product.model_number %></p>
+                            <i class='fas fa-rupee-sign text-dark'>
+                              <b><%= product.price %></b>
+                            </i>
+                          </div>
+                      <!-- <%#= link_to product_path(product), data: { toggle: 'modal', target: '#memberProductModal', remote: true } do %>
+                         <p>More info...</p>
+                      <#% end %>
+                       -->
+                          <div class='row d-flex justify-content-center'>
+                            <%= button_to '+', add_favourite_products_path(product), class: 'btn btn-sm btn-outline-primary mt-2'  %>
+                            <b class='mt-3 ml-3'></b>
+                            <%= button_to '-', remove_favourite_products_path(product), method: :delete, class: 'btn btn-sm btn-outline-danger mt-2 ml-3' %>    
+                          </div>
+                        </div>
+                    </div>
+                   <% end %>
+                </div>           
+            </div>
+          <% end %>  
+        <% end%>
+      </div>
+    </div>
+  </div>  
+</div>  
+

@@ -1,0 +1,63 @@
+<div class='p-2'>
+  <%= form_with(model: @product) do |form| %>
+    <div class='form-group'>
+      <%= form.label :branch_name %>
+      <%= form.text_field :branch_name, class: 'form-control' %>
+      <% product.errors.full_messages_for(:branch_name).each do |message| %>
+        <div class='text-danger'><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class='form-group'>
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+      <% product.errors.full_messages_for(:title).each do |message| %>
+        <div class='text-danger'><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class='form-group'>
+      <%= form.label :description %>
+      <%= form.text_area :description, class: 'form-control' %>
+      <% product.errors.full_messages_for(:description).each do |message| %>
+        <div class='text-danger'><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class='form-group'>
+      <%= form.label :price %>
+      <%= form.text_field :price, class: 'form-control' %>
+      <% product.errors.full_messages_for(:price).each do |message| %>
+        <div class='text-danger'><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class='form-group'>
+      <%= form.label :product_type %>
+      <%= form.text_field :product_type, class: 'form-control' %>
+      <% product.errors.full_messages_for(:product_type).each do |message| %>
+        <div class='text-danger'><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class='form-group'>
+      <%= form.label :model_number %>
+      <%= form.text_field :model_number, class: 'form-control' %>
+      <% product.errors.full_messages_for(:model_number).each do |message| %>
+        <div class='text-danger'><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class='form-group'>
+      <%= form.label 'Upload Image' %>
+      <%= form.file_field :image, class: 'form-control-file' %>
+      <% product.errors.full_messages_for(:image).each do |message| %>
+        <div class='text-danger'><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class='actions'>
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

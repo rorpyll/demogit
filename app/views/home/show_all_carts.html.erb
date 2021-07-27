@@ -1,0 +1,57 @@
+<div class='container'>
+  <% if current_user.user_favourite_products.present? %>
+    <div class="container">
+      <div class='row mt-2 p-3'>
+        <div class='col-md-8 d-flex justify-content-end'>
+          <h3>See your favourite products</h3>
+        </div>
+        <% if @user_fav_product_prices.present? && !@user_fav_product_prices.nil? %>
+          <h4 class='pt-1 ml-3'>Total Price : <i class='fas fa-rupee-sign'></i><%= @user_fav_product_prices.sum %></h4>
+        <% end %>
+      </div>
+    </div>  
+    <div class="container">
+      <div class='row'>
+        <% @products.each do |product| %>
+          <% if @user_fav_products.include?(product.id) %>
+            <div class='col-md-4'> 
+              <div class='card mb-5 border-0 shadow fav_cards_items'>
+                <%= image_tag "#{asset_path 'Gym.jpg' }", class: 'card-img-top p-1', alt: 'product-Image' %>
+                <div class='card-body'>
+                  <div class='card-title'>
+                    <h6><%= product.title %></h6>  
+                  </div>
+                  <div class='card-text text-muted'>
+                    <p><%#=h truncate(product.description, length: 100, omission: '...more') %>
+                    </p>
+                  </div>
+                </div>
+                <div class='card-footer mt-1'>
+                  <div class='row'>
+                    <i class='fas fa-rupee-sign mt-1'>
+                      <b><%= product.price %></b>
+                    </i>
+                     <%= button_to '+', add_favourite_products_path(product), class: 'btn btn-sm btn-success rounded-circle ml-2' %>
+                    <%= button_to '-', remove_favourite_products_path(product), method: :delete, class: 'btn btn-sm btn-danger rounded-circle ml-2' %>
+                  </div>  
+                  <div class='row float-right mr-1'>
+                    <%= link_to 'Buy', 'javascript:void(0)', class: 'btn btn-success mt-3 ml-1' %>
+                  </div>  
+                </div>
+              </div>  
+            </div>  
+          <% end %>
+        <% end %>
+      </div> 
+    </div>  
+  <% else %>
+    <div class="container mb-5 mt-3">
+      <div class="col-md-6 mx-auto">
+        <h3>List you favourite carts</h3>
+        <div class="shadow text-danger mt-5 p-5">
+          <h1>Cart List is empty.</h1>
+        </div>
+      </div>
+    </div>  
+  <% end %>
+</div>

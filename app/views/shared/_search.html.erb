@@ -1,0 +1,10 @@
+<div class="mb-2">
+  <%= search_form_for @q do |f| %>
+    <div class='input-group'>
+      <%= f.search_field :title_cont, placeholder: 'Search product', class: 'form-control pr-2' %>
+      <div class='input-group-prepend'>
+        <%= f.submit class: 'input-group-text' %>
+      </div>
+    </div>
+  <% end %>
+</div>

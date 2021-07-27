@@ -1,0 +1,50 @@
+<p id='notice'><%= notice %></p>
+<div class='container mt-3 mb-3'>
+  <div class='col-md-10 mx-auto'>
+    <div class='card'>
+      <div class='row'>
+        <div class='col-md-6'>
+          <%= image_tag @product.image_url, class: 'card-img-top p-2' %>
+        </div>
+        <div class='col-md-6'>  
+          <div class='card-body'>
+            <div class='card-title'>
+              <strong>Title: </strong>
+                <%= @product.title %>
+            </div>
+            <div class='card-text'>
+              <p>
+                <strong>Branch name:</strong>
+                <%= @product.branch_name %>
+              </p>
+              
+              <p>
+                <strong>Type:</strong>
+                <%= @product.product_type %>
+              </p>
+
+              <p>
+                <strong>Model number:</strong>
+                <%= @product.model_number %>
+              </p>
+
+              <p>
+                <strong>Price:</strong>
+                <%= @product.price %>
+              </p>
+
+              <p>
+                <strong>Description:</strong>
+                <%= @product.description %>
+              </p>
+
+            </div>
+            <div> 
+              <%= link_to 'Back', products_path, class: 'btn btn-outline-dark' %>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>    
+  </div>
+</div>  

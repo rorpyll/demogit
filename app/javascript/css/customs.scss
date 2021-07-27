@@ -1,0 +1,96 @@
+.fav_cards_items{
+}
+@media screen and (max-width: 320px) {
+  .user_fav_items{
+    margin-top: 10px;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .user_fav_items{
+    margin-top: 10px;
+    height: 100%;
+  } 
+}
+
+@media screen and (min-width: 376px ) and ( max-width: 425px) {
+  .user_fav_items{
+    height: 100%;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width: 426px ) and ( max-width: 540px) {
+  .user_fav_items{
+    font-size: 10px;
+    margin-top: 30px;
+  }
+  .cate_list{
+    padding-left: 50px;
+  }
+}
+
+@media screen and (min-width: 541px) and (max-width: 768px) {
+  .user_fav_items{
+    font-size: 10px;
+  }
+  .cate_list{
+    padding-left: 50px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px){
+  .user_fav_items{
+    font-size: 10px;
+  }
+  .cate_list{
+    padding-left: 50px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px){
+  .user_fav_items{
+    font-size: 10px;
+  }
+  .cate_list{
+    padding-left: 50px;
+  } 
+  .user_auth_btn{
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1439px){
+  .user_auth_btn{
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+  }
+  .user_fav_items{
+    height: 24%;
+  }
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1533px){
+  .user_auth_btn{
+    width: 100px;
+    height: 38px;
+    margin-left: 20px;
+  }
+  .user_fav_items{
+    height: 24%;
+  }
+}
+
+
+@media only screen and (min-width: 1554px) and (max-width: 2560px){
+  .user_auth_btn{
+    width: 90px;
+    height: 38px;
+    margin-left: 20px;
+  }
+  .user_fav_items{
+    height: 30%;
+  }
+}

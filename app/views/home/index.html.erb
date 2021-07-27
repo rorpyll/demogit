@@ -1,0 +1,37 @@
+<%= render 'categories/category_list' %>
+
+<%= render 'categories/categories_products' %>
+
+
+<script>
+  $(document).ready(function() {
+    $('.owl-carousel').owlCarousel({
+      margin: 10,
+      loop:true,
+      items: 3,
+      nav: true,
+      responsiveClass: true,
+      navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:2
+        },
+        1000:{
+          items:4,
+          nav:true,
+          loop:true,
+          stagePadding: 10,
+        }
+      }
+    });
+  });
+</script>
+
+<div class='modal fade-in' id='memberProductModal' tabindex='-1' role='dialog' aria-labelledby='memberProductModalLabel' aria-hidden='true'>
+</div>
+
+<div class='modal fade-in' id='memberCategoriesModal' tabindex='-1' role='dialog' aria-labelledby='memberCategoriesModal' aria-hidden='true'>
+</div>

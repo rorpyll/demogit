@@ -1,0 +1,98 @@
+  <!-- Page Heading/Breadcrumbs-->
+<div class="container mt-3">  
+  <h1>Contact</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active">Contact</li>
+  </ol>
+  <!-- Content Row-->
+  <div class="row">
+    <!-- Map Column-->
+    <div class="col-lg-8 mb-4">
+      <!-- Embedded Contact form-->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mb-4">
+            <h3>Contact us</h3>
+            <%= form_with(model: contact) do |form| %>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <%= form.label :full_name %>
+                  <%= form.text_field :full_name, class: "form-control" %>
+                  <% contact.errors.full_messages_for(:full_name).each do |message| %>
+                  <div class='text-danger'><%= message %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <%= form.label :email%>
+                  <%= form.text_field :email, class: 'form-control', :readonly => true%>
+                  <% contact.errors.full_messages_for(:email).each do |message| %>
+                    <div class='text-danger'><%= message %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <%= form.label :number %>
+                  <%= form.text_field :number, class: 'form-control' %>
+                  <% contact.errors.full_messages_for(:number).each do |message| %>
+                    <div class='text-danger'><%= message %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <%= form.label :address %>
+                  <%= form.text_field :address, class: 'form-control' %>
+                  <% contact.errors.full_messages_for(:address).each do |message| %>
+                    <div class='text-danger'><%= message %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <%= form.label :message %>
+                  <%= form.text_area :message, rows: '5', class: 'form-control' %>
+                  <% contact.errors.full_messages_for(:message).each do |message| %>
+                    <div class='text-danger'><%= message %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class='actions'>
+                <%= form.submit 'Send Message', class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Details Column-->
+    <div class="col-lg-4 mb-4">
+      <h3>Contact Details</h3>
+      <p>
+        3481 Melrose Place
+        <br />
+        Beverly Hills, CA 90210
+        <br />
+      </p>
+      <p>
+        <abbr title="Phone">P</abbr>
+        : (123) 456-7890
+      </p>
+      <p>
+        <abbr title="Email">E</abbr>
+        :
+        <a href="mailto:demo@example.com">demo@example.com</a>
+      </p>
+      <p>
+        <abbr title="Hours">H</abbr>
+        : Monday - Friday: 9:00 AM to 5:00 PM
+      </p>
+    </div>
+  </div>
+</div>  
+<section class="py-5">
+
+</section>

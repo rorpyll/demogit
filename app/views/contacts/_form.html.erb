@@ -27,7 +27,7 @@
               <div class="control-group form-group">
                 <div class="controls">
                   <%= form.label :email%>
-                  <%= form.text_field :email, class: 'form-control', :readonly => true%>
+                  <%= form.text_field :email, value: current_user.email, class: 'form-control', :readonly => true%>
                   <% contact.errors.full_messages_for(:email).each do |message| %>
                     <div class='text-danger'><%= message %></div>
                   <% end %>
@@ -56,6 +56,15 @@
                   <%= form.label :message %>
                   <%= form.text_area :message, rows: '5', class: 'form-control' %>
                   <% contact.errors.full_messages_for(:message).each do |message| %>
+                    <div class='text-danger'><%= message %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <%= form.label :delivery_method %>
+                  <%= form.select :delivery_method, ["Takeaway","home delivery"], class: 'form-control' %>
+                  <% contact.errors.full_messages_for(:delivery_method).each do |message| %>
                     <div class='text-danger'><%= message %></div>
                   <% end %>
                 </div>

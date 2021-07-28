@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy add_favourite_products remove_favourite_products]
+  before_action :set_product, only: %i[show edit update destroy add_favourite_products remove_favourite_products update_quantity]
   before_action :authenticate_user!, only: [:add_favourite_products, :remove_favourite_products]
 
   # GET /products or /products.json
@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
   end
 
   def add_favourite_products
-    UserFavouriteProduct.create(user_id: current_user.id, product_id: @product.id, product_price: @product.price)
+    UserFavouriteProduct.create(user_id: current_user.id, product_id: @product.id, product_price: @product.price, quantity: 1)
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Product Add to Fav.' }
     end  
@@ -71,6 +71,13 @@ class ProductsController < ApplicationController
     end
   end
   
+  def update_quantity
+    UserFavouriteProduct.update(quantity: @quantity)
+    respond_to do |format|
+      format.html { redirect_to root_path }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

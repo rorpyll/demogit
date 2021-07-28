@@ -24,4 +24,5 @@ class HomeController < ApplicationController
   def fav_product_ids
     current_user.user_favourite_products.pluck(:product_id)
   end
+
 end

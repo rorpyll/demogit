@@ -54,29 +54,49 @@ class ProductsController < ApplicationController
   end
 
   def add_favourite_products
-    UserFavouriteProduct.create(user_id: current_user.id, product_id: @product.id, product_price: @product.price, quantity: 1)
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Product Add to Fav.' }
-    end  
+    user_favourite_product = current_user.user_favourite_products.find_by(product_id: params[:id])
+    unless user_favourite_product.present?
+      UserFavouriteProduct.create(user_id: current_user.id, product_id: @product.id, product_price: @product.price)
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'Product Add to Fav.' }
+      end
+    else 
+      update_quantity(user_favourite_product)
+    end
   end
 
   def remove_favourite_products
+    user_favourite_product = current_user.user_favourite_products.find_by(product_id: params[:id])
     if current_user.user_favourite_products == []
       redirect_to root_path, notice: 'First Add the product then can remove.'
     else
-      UserFavouriteProduct.find_by(user_id: current_user.id, product_id: @product.id, product_price: @product.price).destroy
-      respond_to do |format|
-        format.html { redirect_to root_path }
+      unless UserFavouriteProduct.find_by(product_id: @product.id).quantity == 1
+        remove_quantity(user_favourite_product)
+      else
+        UserFavouriteProduct.find_by(user_id: current_user.id, product_id: @product.id, product_price: @product.price).destroy
+        respond_to do |format|
+          format.html { redirect_to root_path }
+        end
       end
     end
   end
   
-  def update_quantity
-    UserFavouriteProduct.update(quantity: @quantity)
+  def update_quantity(user_favourite_product)
+    user_favourite_product.increment!(:quantity, 1)
+    user_favourite_product.update(product_price: user_favourite_product.product_price + @product.price)
     respond_to do |format|
       format.html { redirect_to root_path }
     end
   end
+
+  def remove_quantity(user_favourite_product)
+    user_favourite_product.decrement!(:quantity, 1)
+    user_favourite_product.update(product_price: user_favourite_product.product_price - @product.price)
+    respond_to do |format|
+      format.html { redirect_to root_path }
+    end
+  end
+
 
   private
 

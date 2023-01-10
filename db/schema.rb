@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_122352) do
+ActiveRecord::Schema.define(version: 2022_12_26_063541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2021_07_27_122352) do
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "delivery_method"
   end
 
   create_table "products", force: :cascade do |t|
@@ -69,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_122352) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
+    t.string "stripe_price_id"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_122352) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "product_price"
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.index ["product_id"], name: "index_user_favourite_products_on_product_id"
     t.index ["user_id"], name: "index_user_favourite_products_on_user_id"
   end
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_122352) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -66,6 +66,7 @@ class ProductsController < ApplicationController
   end
 
   def remove_favourite_products
+    byebug
     user_favourite_product = current_user.user_favourite_products.find_by(product_id: params[:id])
     if current_user.user_favourite_products == []
       redirect_to root_path, notice: 'First Add the product then can remove.'

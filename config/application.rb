@@ -18,6 +18,7 @@ module Accutech
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.stripe.secret_key = "sk_test_51MCgQGDNXqejzLqXmJ2gXXztMUfD2rlQQTZZJmHrVEgAYIcMGGyl8Tvm1ORubBsEtv020lO8Dx7sbfyFTp0ND0Vd00OIpOyTAO"
     config.autoloader = :classic
     config.assets.initialize_on_precompile = false
   end

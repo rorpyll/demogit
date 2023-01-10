@@ -15,6 +15,11 @@ class HomeController < ApplicationController
     @user_fav_product_prices = fav_product_price 
   end
 
+
+  def top_users
+    @users = User.all
+  end
+
   private
 
   def fav_product_price

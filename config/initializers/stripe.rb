@@ -1,0 +1,7 @@
+# Rails.configuration.stripe = {
+#     :publishable_key => 'pk_test_51KPdqFDuGkfvacKRFP6rDx4rnyjUVyJESReNLxPPlr5IZgHAe0rwO1X7x964PeeJYNlHV4UepflH4sV3IklYWu5A00h3uNrWB3',
+#     :secret_key => 'sk_test_51MCgQGDNXqejzLqXmJ2gXXztMUfD2rlQQTZZJmHrVEgAYIcMGGyl8Tvm1ORubBsEtv020lO8Dx7sbfyFTp0ND0Vd00OIpOyTAO'
+# }
+Rails.configuration.stripe.publishable_key = 'pk_test_51KPdqFDuGkfvacKRFP6rDx4rnyjUVyJESReNLxPPlr5IZgHAe0rwO1X7x964PeeJYNlHV4UepflH4sV3IklYWu5A00h3uNrWB3'
+Rails.configuration.stripe.secret_key = 'sk_test_51MCgQGDNXqejzLqXmJ2gXXztMUfD2rlQQTZZJmHrVEgAYIcMGGyl8Tvm1ORubBsEtv020lO8Dx7sbfyFTp0ND0Vd00OIpOyTAO'
+Stripe.api_key = "sk_test_51MCgQGDNXqejzLqXmJ2gXXztMUfD2rlQQTZZJmHrVEgAYIcMGGyl8Tvm1ORubBsEtv020lO8Dx7sbfyFTp0ND0Vd00OIpOyTAO"

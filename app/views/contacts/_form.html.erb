@@ -60,17 +60,8 @@
                   <% end %>
                 </div>
               </div>
-              <div class="control-group form-group">
-                <div class="controls">
-                  <%= form.label :delivery_method %>
-                  <%= form.select :delivery_method, ["Takeaway","home delivery"], class: 'form-control' %>
-                  <% contact.errors.full_messages_for(:delivery_method).each do |message| %>
-                    <div class='text-danger'><%= message %></div>
-                  <% end %>
-                </div>
-              </div>
               <div class='actions'>
-                <%= form.submit 'Send Message', class: "btn btn-primary" %>
+                <%= form.submit 'Next', class: "btn btn-primary" %>
               </div>
             <% end %>
           </div>

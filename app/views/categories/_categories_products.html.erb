@@ -4,7 +4,7 @@
       <div class='col-md-4 bg-light float-right'>
         <h3 class='card-header bg-primary text-white'>Cart<i class="fas fa-shopping-cart fa-xs"></i></h3>
         <div class='card user_fav_items mt-3 '> 
-        <% if user_signed_in? %>        
+        <% if user_signed_in? %>   
             <% @products.each do |product| %>
               <% if @user_fav_products.include?(product.id) %>
                   <div class='card-body'>
@@ -13,11 +13,12 @@
                       <div class="media-body">
                         <h5 class="mt-0"><%= product.title.capitalize %></h5>
                         <i class='fas fa-rupee-sign'>
-                          <b><%= product.price %></b>
+                          <b><%= product.user_favourite_products.pluck(:product_price).sum %></b>
                         </i>
+                        <% product_quantity = UserFavouriteProduct.find_by(product_id: product.id).quantity %>
                         <div class='row d-flex mt-2'>
                           <%= button_to '+', add_favourite_products_path(product), class: 'btn btn-sm btn-success rounded-circle ml-2', id: '#modelFavouriteProductModel', remote: true  %>
-                          <b class='mt-3 ml-2'></b>
+                          <b class='mt-3 ml-2'><%= product_quantity %></b>
                           <%= button_to '-', remove_favourite_products_path(product), method: :delete, class: 'btn btn-sm btn-danger rounded-circle ml-2', id: '#modelFavouriteProductModel', remote: true  %>   
                         </div> 
                       </div>
@@ -59,6 +60,7 @@
                             <i class='fas fa-rupee-sign text-dark'>
                               <b><%= product.price %></b>
                             </i>
+                            <b></b>
                           </div>
                       <!-- <%#= link_to product_path(product), data: { toggle: 'modal', target: '#memberProductModal', remote: true } do %>
                          <p>More info...</p>

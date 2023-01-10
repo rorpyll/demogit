@@ -65,3 +65,6 @@ gem 'activeadmin'
 gem 'active_admin_theme'
 gem 'ransack'
 gem 'devise'
+gem "acts_as_follower"
+gem 'stripe-rails'
+gem 'stripe'

@@ -24,11 +24,27 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      redirect_to root_path
+      redirect_to product_details_path
     else
       render :new
     end
   end
+
+  def product_details
+    @product_details = current_user.user_favourite_products
+  end
+
+  def checkout_session
+      Stripe::Checkout::Session.create({
+      success_url: 'https://example.com/success',
+      cancel_url: 'https://example.com/cancel',
+      line_items: [
+        {price: 'price_H5ggYwtDq4fbrJ', quantity: 2},
+      ],
+      mode: 'payment',
+    })
+  end
+
 
   # PATCH/PUT /contacts/1 or /contacts/1.json
   def update
